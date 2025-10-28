@@ -9,7 +9,7 @@
 # и сотрудниках. Должны быть методы для добавления животных и сотрудников в зоопарк.
 # # 5. Создайте классы для сотрудников, например, `ZooKeeper`, `Veterinarian`, которые могут иметь
 # специфические методы (например, `feed_animal()` для `ZooKeeper` и `heal_animal()` для `Veterinarian`).
-from pyclbr import Class
+# rom pyclbr import Class
 
 
 class Animal():
