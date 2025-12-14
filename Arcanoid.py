@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 
 # Инициализация Pygame
 pygame.init()
@@ -28,7 +29,7 @@ RED = (255, 0, 0)
 
 # ФПС
 clock = pygame.time.Clock()
-fps = 60
+fps = 30
 
 # Параметры платформы
 paddle_width, paddle_height = 100, 10
@@ -48,6 +49,7 @@ lives = 3
 font = pygame.font.SysFont(None, 48)
 game_over = False
 game_won = False
+color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
 # Основной цикл игры
 running = True
@@ -80,6 +82,7 @@ while running:
         # Пропуск мяча — потеря жизни
         if ball_y >= screen_height:
             lives -= 1
+
             if lives <= 0:
                 game_over = True
             else:
@@ -87,6 +90,8 @@ while running:
                 ball_x = screen_width // 2
                 ball_y = paddle_y - ball_radius
                 ball_speed_y = -4  # вверх
+                color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+
                 # Можно также сбросить скорость по X, но оставим как есть
 
         # Столкновение с кирпичами
@@ -117,10 +122,12 @@ while running:
 
     # Платформа и мяч
     pygame.draw.rect(screen, WHITE, (paddle_x, paddle_y, paddle_width, paddle_height))
-    pygame.draw.circle(screen, BLUE, (int(ball_x), int(ball_y)), ball_radius)
+    # pygame.draw.circle(screen, BLUE, (int(ball_x), int(ball_y)), ball_radius)
+
+    pygame.draw.circle(screen, color, (int(ball_x), int(ball_y)), ball_radius)
 
     # Жизни
-    lives_text = font.render(f"Жизни: {lives}", True, WHITE)
+    lives_text = font.render(f"Жизни: {lives}", True, RED)
     screen.blit(lives_text, (10, 10))
 
     # Сообщения об окончании
