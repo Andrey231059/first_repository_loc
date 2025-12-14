@@ -49,7 +49,7 @@ lives = 3
 font = pygame.font.SysFont(None, 48)
 game_over = False
 game_won = False
-color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+color = BLUE
 
 # Основной цикл игры
 running = True
